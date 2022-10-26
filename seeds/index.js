@@ -35,4 +35,7 @@ const seedDB = async () => {
     }
 }
 
-seedDB();
+// Close the database connection after executing seedDB()
+seedDB().then(() => {
+    mongoose.connection.close();
+})
