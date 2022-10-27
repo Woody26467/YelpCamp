@@ -26,10 +26,14 @@ const seedDB = async () => {
     // create a loop to add 50 random cities in database
     for (let i = 0; i < 50; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
+        const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             // Create a title comprising of random descriptor and random place
-            title: `${sample(descriptors)} ${sample(places)}`
+            title: `${sample(descriptors)} ${sample(places)}`,
+            image: `https://source.unsplash.com/random/900x600?camping,${i}`,
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium corporis maxime voluptas quam consectetur ipsum molestiae. Repellendus dolorem inventore et ipsam esse? Corporis libero suscipit sequi eius doloremque ipsam debitis?',
+            price
         })
         await camp.save();
     }
